@@ -1,0 +1,92 @@
+﻿'GameEngineTK.exe' (Win32): 'C:\Users\s162001\Documents\GameEngine2\GameEngineTK\Release\GameEngineTK.exe' が読み込まれました。シンボルが読み込まれました。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ntdll.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\kernel32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\kernel32.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\kernel32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\KernelBase.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\user32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\d3d11.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\win32u.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\gdi32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\msvcrt.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\gdi32full.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ole32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\dxgi.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\combase.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ucrtbase.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\rpcrt4.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\sspicli.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\cryptbase.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\bcryptprimitives.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\sechost.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\imm32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\kernel.appcore.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\uxtheme.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\msctf.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\oleaut32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\msvcp_win.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\dwmapi.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ResourcePolicyClient.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ResourcePolicyClient.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_134ba6ee926e8361\igd10iumd32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\advapi32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\bcrypt.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ncrypt.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ntasn1.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_134ba6ee926e8361\igc32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\IMEJP\IMJPTIP.DLL' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\shell32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\cfgmgr32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\windows.storage.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\powrprof.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\shlwapi.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\SHCore.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\profapi.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\version.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\iertutil.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\propsys.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\oleacc.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\ntmarta.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\IMEJP\IMJPAPI.DLL' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\crypt32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\msasn1.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\IMJKAPI.DLL' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\policymanager.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\msvcp110_win.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\IMEJP\IMJPPRED.DLL' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\IMETIP.DLL' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\dui70.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\imecfm.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\wer.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\clbcatq.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\IMEAPIS.DLL' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\imecfmps.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+0x7643A932 (KernelBase.dll) で例外がスローされました (GameEngineTK.exe 内): 0x40080201: WinRT originate error (パラメーター: 0x80040155, 0x0000004A, 0x0757E170)
+0x7643A932 (KernelBase.dll) で例外がスローされました (GameEngineTK.exe 内): 0x40080201: WinRT originate error (パラメーター: 0x80040155, 0x0000004A, 0x0743E070)
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\IMESEARCHDLL.DLL' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+0x7643A932 (KernelBase.dll) で例外がスローされました (GameEngineTK.exe 内): 0x40080201: WinRT originate error (パラメーター: 0x80040155, 0x0000004A, 0x0743E070)
+0x7643A932 で例外がスローされました (GameEngineTK.exe 内): Microsoft C++ の例外: wil::ResultException (メモリの場所 0x00B3CFF0)。
+0x7643A932 で例外がスローされました (GameEngineTK.exe 内): Microsoft C++ の例外: [rethrow] (メモリの場所 0x00000000)。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\wer.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\imecfm.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\dui70.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\IMETIP.DLL' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.14393.953_none_89c2555adb023171\comctl32.dll' が読み込まれました。PDB ファイルを開けないか、ファイルが見つかりません。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\iertutil.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\oleacc.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\IMEJP\IMJPTIP.DLL' がアンロードされました
+スレッド 0x26f4 はコード 0 (0x0) で終了しました。
+スレッド 0xd0c はコード 0 (0x0) で終了しました。
+スレッド 0x1b74 はコード 0 (0x0) で終了しました。
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\IMESEARCHDLL.DLL' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\imecfmps.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\SysWOW64\IME\SHARED\IMEAPIS.DLL' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_134ba6ee926e8361\igc32.dll' がアンロードされました
+'GameEngineTK.exe' (Win32): 'C:\Windows\System32\DriverStore\FileRepository\igdlh64.inf_amd64_134ba6ee926e8361\igd10iumd32.dll' がアンロードされました
+スレッド 0x1934 はコード 0 (0x0) で終了しました。
+スレッド 0x2650 はコード 0 (0x0) で終了しました。
+スレッド 0x1b68 はコード 0 (0x0) で終了しました。
+スレッド 0x17ec はコード 0 (0x0) で終了しました。
+スレッド 0x32c はコード 0 (0x0) で終了しました。
+スレッド 0x1ab8 はコード 0 (0x0) で終了しました。
+プログラム '[5820] GameEngineTK.exe' はコード 0 (0x0) で終了しました。
