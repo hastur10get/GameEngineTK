@@ -5,8 +5,13 @@
 #pragma once
 
 #include "StepTimer.h"
-
-
+#include <PrimitiveBatch.h>
+#include <VertexTypes.h>
+#include <Effects.h>
+#include <CommonStates.h>
+#include <SimpleMath.h>
+#include "DebugCamera.h"
+#include <Model.h>
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
 class Game
@@ -62,4 +67,34 @@ private:
 
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
+	//プリミティブバッチ
+	std::unique_ptr<DirectX::PrimitiveBatch<DirectX::VertexPositionColor>> m_batch;
+	//エフェクト
+	std::unique_ptr<DirectX::BasicEffect> m_effect;
+	//入力レイアウト
+	Microsoft::WRL::ComPtr <ID3D11InputLayout > ｍ_inputLayout;
+
+	std::unique_ptr<DirectX::CommonStates> m_states;
+	//ワールド行列
+	DirectX::SimpleMath::Matrix m_world;
+	//ビュー行列
+	DirectX::SimpleMath::Matrix m_view;
+	//プロジェクション行列
+	DirectX::SimpleMath::Matrix m_proj;
+
+	//デバッグカメラ
+	std::unique_ptr<DebugCamera> m_debugcamera;
+	//エフェクトファクトリー
+	std::unique_ptr<DirectX::EffectFactory> m_factory;
+	//skyモデル
+	std::unique_ptr<DirectX::Model> m_modelSkydome;
+	//groundモデル
+	std::unique_ptr<DirectX::Model> m_modelGround;
+	//ballモデル
+	std::unique_ptr<DirectX::Model> m_modelBall;
+	//ballのワールド行列
+	DirectX::SimpleMath::Matrix m_worldBall[10];
+	DirectX::SimpleMath::Matrix m_worldBall1[10];
+
+	
 };

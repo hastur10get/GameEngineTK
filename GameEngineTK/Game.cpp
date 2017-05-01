@@ -4,21 +4,14 @@
 
 #include "pch.h"
 #include "Game.h"
-#include <PrimitiveBatch.h>
-#include <VertexTypes.h>
-#include <Effects.h>
-#include <CommonStates.h>
-#include <SimpleMath.h>
+
 extern void ExitGame();
 
 using namespace DirectX;
-
+using namespace SimpleMath;
 using Microsoft::WRL::ComPtr;
+//Smart-pointers 勝手にdeleteしてくれる便利なｱﾚ
 
-std::unique_ptr<PrimitiveBatch<VertexPositionColor>> primitiveBatch;
-
-std::unique_ptr<BasicEffect> basicEffect;
-ComPtr<ID3D11InputLayout> inputLayout;
 
 Game::Game() :
     m_window(0),
@@ -46,27 +39,39 @@ void Game::Initialize(HWND window, int width, int height)
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
 	//初期化はここに書く
-	
-	primitiveBatch = std::make_unique<PrimitiveBatch<VertexPositionColor>>(m_d3dContext.Get());
+	//Get.() 生スコープを使う
 
-	
+	m_batch = std::make_unique<PrimitiveBatch<VertexPositionColor>>(m_d3dContext.Get());
 
-	basicEffect = std::make_unique<BasicEffect>(m_d3dDevice.Get());
+	m_effect = std::make_unique<BasicEffect>(m_d3dDevice.Get());
 
-	basicEffect->SetProjection(XMMatrixOrthographicOffCenterRH(0,
+	m_effect->SetProjection(XMMatrixOrthographicOffCenterRH(0,
 		m_outputWidth, m_outputHeight, 0, 0, 1));
-	basicEffect->SetVertexColorEnabled(true);
+	m_effect->SetVertexColorEnabled(true);
 	
 	void const* shaderByteCode;
 	size_t byteCodeLength;
 
-	basicEffect->GetVertexShaderBytecode(&shaderByteCode, &byteCodeLength);
+	m_effect->GetVertexShaderBytecode(&shaderByteCode, &byteCodeLength);
 
 	m_d3dDevice->CreateInputLayout(VertexPositionColor::InputElements,
 		VertexPositionColor::InputElementCount,
 		shaderByteCode, byteCodeLength,
-		inputLayout.GetAddressOf());
+		ｍ_inputLayout.GetAddressOf());
 
+	m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
+
+	// デバッグカメラを生成
+	m_debugcamera = std::make_unique<DebugCamera>(m_outputWidth, m_outputHeight);
+	//エフェクトファクトリー
+	m_factory = std::make_unique<EffectFactory>(m_d3dDevice.Get());
+	//テクスチャのパスを設定
+	m_factory->SetDirectory(L"Resources");
+	//モデルの生成
+	m_modelSkydome = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/skydome1m.cmo", *m_factory);
+	m_modelGround = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/ground1m.cmo", *m_factory);
+	m_modelBall = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/ball.cmo", *m_factory);
+	
 }
 
 // Executes the basic game loop.
@@ -88,6 +93,40 @@ void Game::Update(DX::StepTimer const& timer)
     // TODO: Add your game logic here.
     elapsedTime;
 	// 毎フレーム処理はここに書く
+	m_debugcamera->Update();
+	static float time;
+	static float time1;
+	time += 0.005f;
+	time1 -= 0.005f;
+	Matrix rot = Matrix::CreateRotationY(time);
+	Matrix rot1 = Matrix::CreateRotationY(time1);
+	for (int i = 0; i<10; i++)
+	{
+	//ワールド行列を計算
+	//スケーリング
+	Matrix scalemat = Matrix::CreateScale(0.5f);
+	//ロール
+	Matrix rotmatZ = Matrix::CreateRotationZ(0);
+	//ピッチ（仰角）
+	Matrix rotmatX = Matrix::CreateRotationX(0);
+	//ヨー(方位角)
+	Matrix rotmatY[10];
+	
+	rotmatY[i]=Matrix::CreateRotationY(XMConvertToRadians(i * 36));
+	
+	// 回転行列の合成
+	Matrix rotmat = rotmatZ*rotmatX*rotmatY[i] * rot;
+	Matrix rotmat1 = rotmatZ*rotmatX*rotmatY[i] * rot1;
+
+	//平行移動
+	Matrix transmat = Matrix::CreateTranslation(20,0, 0);
+	Matrix transmat1 = Matrix::CreateTranslation(40, 0, 0);
+
+	//ワールド行列の合成(SRT)
+	m_worldBall[i] = scalemat*transmat*rotmat;
+	m_worldBall1[i] = scalemat*transmat1*rotmat1;
+	}
+	
 }
 
 // Draws the scene.
@@ -103,22 +142,58 @@ void Game::Render()
 
     // TODO: Add your rendering code here.
 	// 描画処理はここに書く
-	CommonStates states(m_d3dDevice.Get());
-	m_d3dContext->OMSetBlendState(states.Opaque(), nullptr, 0xFFFFFFFF);
-	m_d3dContext->OMSetDepthStencilState(states.DepthNone(), 0);
-	m_d3dContext->RSSetState(states.CullNone());
+	//CommonStates ステイトの既定
+	
+	m_d3dContext->OMSetBlendState(m_states->Opaque(), nullptr, 0xFFFFFFFF);
+	m_d3dContext->OMSetDepthStencilState(m_states->DepthNone(), 0);
+	m_d3dContext->RSSetState(m_states->CullNone());
+	//ビュー行列を作成
+	//m_view = Matrix::CreateLookAt(Vector3(0.f, 0.f, 50.f), //カメラ支店
+	//	Vector3(0, 0, 0), //カメラ参照点
+	//	Vector3(1, 0, 0) //上方向ベクトル
+	//);
+	//デバッグカメラからビュー行列を取得
+	m_view = m_debugcamera->GetCameraMatrix();
+	//プロジェクション行列を作成
+	m_proj = Matrix::CreatePerspectiveFieldOfView(
+		XM_PI / 4.f,	//視野角（上下方向）
+		float(m_outputWidth) / float(m_outputHeight),	//アスペクト比
+		0.1f,	//ニアクリップ
+		500.f);	//ﾌｧｰｯ!!!!クリップ
 
-	basicEffect->Apply(m_d3dContext.Get());
-	m_d3dContext->IASetInputLayout(inputLayout.Get());
+	m_effect->SetView(m_view);
+	m_effect->SetProjection(m_proj);
+	m_effect->Apply(m_d3dContext.Get());
+	m_d3dContext->IASetInputLayout(ｍ_inputLayout.Get());
 
-	primitiveBatch->Begin();
-	primitiveBatch->DrawLine(
+	//モデルの描画
+	m_modelSkydome->Draw(m_d3dContext.Get(), *m_states,m_world, m_view, m_proj);
+	m_modelGround->Draw(m_d3dContext.Get(), *m_states, m_world, m_view, m_proj);
+	for (int i=0; i < 10; i++)
+	{
+		m_modelBall->Draw(m_d3dContext.Get(), *m_states, m_worldBall[i], m_view, m_proj);
+		m_modelBall->Draw(m_d3dContext.Get(), *m_states, m_worldBall1[i], m_view, m_proj);
+	}
+	m_batch->Begin();
+	m_batch->DrawLine(
 		VertexPositionColor
 		(SimpleMath::Vector3(0, 0, 0), SimpleMath::Color(1, 1, 1)),
 		VertexPositionColor
 		(SimpleMath::Vector3(800,600, 0), SimpleMath::Color(1, 0, 1))
 	);
-	primitiveBatch->End();
+	//3D用のやつ
+	VertexPositionColor v1(Vector3(0.f, 0.5f, 0.5f), Colors::Snow);
+	VertexPositionColor v2(Vector3(0.5f, -0.5f, 0.5f), Colors::Yellow);
+	VertexPositionColor v3(Vector3(-0.5f, -0.5f, 0.5f), Colors::Yellow);
+	
+
+	/*VertexPositionColor v1(Vector3(400.f, 150.f, 0.f), Colors::Red);
+	VertexPositionColor v2(Vector3(600.f, 450.f, 0.f), Colors::Yellow);
+	VertexPositionColor v3(Vector3(200.f, 450.f, 0.f), Colors::Yellow);*/
+
+	m_batch->DrawTriangle(v1, v2, v3);
+
+	m_batch->End();
     Present();
 }
 
@@ -128,7 +203,6 @@ void Game::Clear()
     // Clear the views.
     m_d3dContext->ClearRenderTargetView(m_renderTargetView.Get(), Colors::CornflowerBlue);
     m_d3dContext->ClearDepthStencilView(m_depthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
-
     m_d3dContext->OMSetRenderTargets(1, m_renderTargetView.GetAddressOf(), m_depthStencilView.Get());
 
     // Set the viewport.
