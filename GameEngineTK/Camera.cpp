@@ -25,8 +25,9 @@ Camera::~Camera()
 void Camera::Update()
 {
 	//ビュー行列の生成
-
+	m_view = Matrix::CreateLookAt(m_eyepos, m_refpos, m_upvec);
 	//射影行列の生成
+	m_proj = Matrix::CreatePerspectiveFieldOfView(m_fovY, m_aspect, m_nearclip, m_farclip);
 
 }
 

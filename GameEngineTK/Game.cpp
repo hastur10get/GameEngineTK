@@ -65,6 +65,7 @@ void Game::Initialize(HWND window, int width, int height)
 
 	m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
 
+	m_keyboard = std::make_unique<Keyboard>();
 	// デバッグカメラを生成
 	m_debugcamera = std::make_unique<DebugCamera>(m_outputWidth, m_outputHeight);
 	//エフェクトファクトリー
@@ -76,6 +77,7 @@ void Game::Initialize(HWND window, int width, int height)
 	m_modelGround = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/ground200m.cmo", *m_factory);
 	m_modelBall = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/ball.cmo", *m_factory);
 	m_modelTeapot = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/pot.cmo", *m_factory);
+	m_modelHead = Model::CreateFromCMO(m_d3dDevice.Get(), L"Resources/head.cmo", *m_factory);
 	//angle = 0 + (int)(rand()*XM_2PI - 0 + 1.0) / (1.0 + RAND_MAX);
 	//distance = 0 + (int)(rand() * 100 - 0 + 1.0) / (1.0 + RAND_MAX);
 	for (int i = 0; i < 20; i++)
@@ -87,6 +89,8 @@ void Game::Initialize(HWND window, int width, int height)
 	n = 1.0f;
 	//カメラの生成
 	m_Camera = std::make_unique<FollowCamera>(m_outputWidth, m_outputHeight);
+	float head_angle = 0.0f;
+
 }
 
 // Executes the basic game loop.
@@ -98,12 +102,10 @@ void Game::Tick()
 	});
 
 	Render();
-	// 自機に追従するカメラ
-	m_Camera->SetTargetPos(head_pos);
-	m_Camera->SetTargetAngle(head_angle);
-	//m_Camera->SetEyePos();
+	
+	
 	m_Camera->Update();
-	m_view = m_Camera->GetProjection();
+	m_view = m_Camera->GetView();
 	m_proj = m_Camera->GetProjection();
 }
 
@@ -116,6 +118,7 @@ void Game::Update(DX::StepTimer const& timer)
 	elapsedTime;
 	// 毎フレーム処理はここに書く
 	m_debugcamera->Update();
+	
 	cnt++;
 	static float spin;
 	spin += 0.005f;
@@ -147,7 +150,40 @@ void Game::Update(DX::StepTimer const& timer)
 		m_worldPot[i]= scalemat*rot*transmat;
 		
 	}
+	Keyboard::State Key = m_keyboard->GetState();
+	// 自機に追従するカメラ
+	m_Camera->SetTargetPos(head_pos);
+	m_Camera->SetTargetAngle(head_angle);
+	m_Camera->Update();
+	m_view = m_Camera->GetView();
+	m_proj - m_Camera->GetProjection();
+	if (Key.D)
+	{
+		head_angle += -0.05f;
+	}
+	if (Key.A)
+	{
+		head_angle += 0.05f;
+	}
+	if (Key.W)
+	{
+		Vector3 move(0, 0, -0.1f);
+		Matrix rotate = Matrix::CreateRotationY(head_angle);
+		move = Vector3::TransformNormal(move, rotate);
+		head_pos += move;
+	}
+	if (Key.S)
+	{
+		Vector3 move(0, 0, 0.1f);
+		Matrix rotate = Matrix::CreateRotationY(head_angle);
+		move = Vector3::TransformNormal(move, rotate);
+		head_pos += move;
+	}
+	// 自機のワールド行列を計算
 
+		Matrix rotate = Matrix::CreateRotationY(head_angle);
+		Matrix transmat = Matrix::CreateTranslation(head_pos);
+		m_worldHead = rotate*transmat;
 }
 
 // Draws the scene.
@@ -197,6 +233,9 @@ void Game::Render()
 	//float farclip = 1000.0;
 
 	//m_proj = Matrix::CreatePerspectiveFieldOfView(fovY, aspect, nearclip, farclip);
+	//// 自機の追従をするカメラ
+	//m_Camera->SetTargetPos(head_pos);
+	//m_Camera->SetTargetAngle(head_angle);
 
 	m_effect->SetView(m_view);
 	m_effect->SetProjection(m_proj);
@@ -206,10 +245,12 @@ void Game::Render()
 	//モデルの描画
 	m_modelSkydome->Draw(m_d3dContext.Get(), *m_states, Matrix::Identity, m_view, m_proj);
 	m_modelGround->Draw(m_d3dContext.Get(), *m_states, Matrix::Identity, m_view, m_proj);
+	
 	for (int i=0; i < 20;i++)
 	{
 		m_modelTeapot->Draw(m_d3dContext.Get(), *m_states, m_worldPot[i], m_view, m_proj);
 	}
+	m_modelHead->Draw(m_d3dContext.Get(), *m_states,m_worldHead, m_view, m_proj);
 	m_batch->Begin();
 	m_batch->DrawLine(
 		VertexPositionColor

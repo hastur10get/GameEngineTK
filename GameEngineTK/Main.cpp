@@ -265,6 +265,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_MOUSEHOVER:
 		Mouse::ProcessMessage(message, wParam, lParam);
 		break;
+	case WM_KEYDOWN:
+	case WM_KEYUP:
+	case WM_SYSKEYUP:
+		Keyboard::ProcessMessage(message, wParam, lParam);
+			
+
+
+
+
     }
 
     return DefWindowProc(hWnd, message, wParam, lParam);

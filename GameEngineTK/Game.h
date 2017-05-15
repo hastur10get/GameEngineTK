@@ -12,6 +12,7 @@
 #include <SimpleMath.h>
 #include "DebugCamera.h"
 #include <Model.h>
+#include <Keyboard.h>
 #include "FollowCamera.h"
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -95,6 +96,9 @@ private:
 	std::unique_ptr<DirectX::Model> m_modelBall;
 	//potモデル
 	std::unique_ptr<DirectX::Model> m_modelTeapot;
+	//頭
+	std::unique_ptr<DirectX::Model> m_modelHead;
+
 	//ballのワールド行列
 	DirectX::SimpleMath::Matrix m_worldBall[10];
 	DirectX::SimpleMath::Matrix m_worldBall1[10];
@@ -102,6 +106,10 @@ private:
 	DirectX::SimpleMath::Matrix m_worldPot[20];
 	//カメラ
 	std::unique_ptr<FollowCamera> m_Camera;
+	std::unique_ptr<DirectX::Keyboard> m_keyboard;
+	DirectX::SimpleMath::Vector3 head_pos;
+	DirectX::SimpleMath::Matrix m_worldHead;
+	float head_angle;
 
 	float angle[20];
 	float distance[20];
