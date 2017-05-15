@@ -159,13 +159,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="DebugCamera.h" />
+    <ClInclude Include="FollowCamera.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StepTimer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DebugCamera.cpp" />
+    <ClCompile Include="FollowCamera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
@@ -191,7 +195,10 @@
   </ItemGroup>
   <ItemGroup>
     <MeshContentTask Include="Assets\ball.FBX" />
+    <MeshContentTask Include="Assets\glass.FBX" />
     <MeshContentTask Include="Assets\ground1m.FBX" />
+    <MeshContentTask Include="Assets\ground200m.FBX" />
+    <MeshContentTask Include="Assets\pot.FBX" />
     <MeshContentTask Include="Assets\skydome1m.FBX" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
